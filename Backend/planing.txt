@@ -1,0 +1,38 @@
+#User Password Management:
+  -->POST /user/changePassword: Allow users to change their password.
+  -->POST /user/resetPassword: Handle password reset requests.
+
+#Post Management:
+  -->GET /post/:postId: Retrieve a single post by its ID. This can be useful for viewing individual posts   outside of a user’s profile.
+
+#Comment Management:
+  -->GET /post/comments/:postId: Retrieve all comments for a particular post.
+
+#Search Functionality:
+  -->GET /search/users: Search for users by username or email.
+  -->GET /search/posts: Search for posts by content or hashtags.
+
+
+#End Points Herarchi
+
+POST   /users/signUp                              -> signUpHandler
+POST   /users/login                               -> loginHandler
+POST   /users/logout                              -> logOutHandler (fix incomplete)
+GET    /users/:userId/profile                     -> userProfileHandler
+PUT    /users/:userId/profile                     -> userEditProfileHandler
+GET    /users/:userId/followers                   -> userFollowersHandler
+GET    /users/:userId/followings                  -> userFollowingsHandler
+POST   /users/:userId/follow/:candidateId         -> followHandler
+POST   /users/:userId/unfollow/:candidateId       -> unFollowHandler
+
+POST   /posts/:userId/create                      -> createPostHandler
+PUT    /posts/:userId/:postId                     -> editPostHandler
+DELETE /posts/:userId/:postId                     -> deletePostHandler
+GET    /posts/:userId                             -> userPostsHandler
+GET    /posts/:postId                             -> getSinglePostHandler (suggested)
+POST   /posts/:postId/like                        -> postLikeHandler (remove userId if not needed)
+POST   /posts/:postId/unlike                      -> postUnlikeHandler (remove userId if not needed)
+POST   /posts/:postId/comments                    -> postCommentHandler
+PUT    /posts/:postId/comments/:commentId         -> postEditCommentHandler
+DELETE /posts/:postId/comments/:commentId         -> postDeleteCommentHandler
+GET    /posts/:postId/comments                    -> getAllCommentsHandler (suggested)
